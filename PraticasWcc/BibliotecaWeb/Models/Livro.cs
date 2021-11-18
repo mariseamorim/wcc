@@ -9,11 +9,7 @@ namespace BibliotecaWeb.Models
 {
     public class Livro
     {
-        public Livro()
-        {
-           
-        }
-
+       
         public Livro(string titulo, string descricao, double preco, Autor autor, Genero genero)
         {
             Titulo = titulo;
@@ -30,6 +26,13 @@ namespace BibliotecaWeb.Models
         public Autor Autor { get;  set; }
         public Genero Genero { get;  set; }
 
+        public List<string> ListaLivros { get; set; }
+
+        public Livro()
+        {
+            ListaLivros = new List<string>();
+        }
+
         public Livro Cadastrar()
         {
             return this;
@@ -43,6 +46,11 @@ namespace BibliotecaWeb.Models
                 Genero = Genero,
             };*/
         }
+        public List<Livro> ListaDeLivro => new List<Livro>()
+        {
+            this,
+            new Livro(" Harry Potter ", " Livro sobre uma escola de bruxaria ", 5, new Autor(" J. K. Rowling "), Genero.F)
+        };
     }
     public enum Genero
     {

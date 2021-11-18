@@ -15,14 +15,19 @@ namespace BibliotecaWeb.Models
         }
         public Autor(string nome)
         {
-            _nome = nome;
+            Nome = nome;
         }
 
         public string Nome
         {
             get { return _nome; }
-            set { _nome = $"{value} perfeita"; }
+            set { _nome = value; }
         }
+
+        public List<Autor> ListaDeAutor => new List<Autor>() { 
+            this ,
+            new Autor("João")
+        };
 
     }
 }

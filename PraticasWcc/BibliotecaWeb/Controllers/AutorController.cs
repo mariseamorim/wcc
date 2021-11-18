@@ -20,7 +20,8 @@ namespace BibliotecaWeb.Controllers
 
         public IActionResult Autor()
         {
-            return View();
+            var listaDeAutor = new Autor("Marise Amorim").ListaDeAutor;
+            return View(listaDeAutor);
         }
 
       
