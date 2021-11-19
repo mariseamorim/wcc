@@ -52,6 +52,7 @@ namespace BibliotecaWeb
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            app.UseStaticFiles();
         }
     }
 }

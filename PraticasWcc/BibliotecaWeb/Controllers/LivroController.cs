@@ -24,7 +24,9 @@ namespace BibliotecaWeb.Controllers
 
         public IActionResult Livro()
         {
-            var listaDeLivros = new Livro(" Código Limpo ", " Livro sobre tecnologia ", 6.50, new Autor(" Robert Cecil Martin "), Genero.F).ListaDeLivro; ;
+            //var listaDeLivros = new Livro(" Código Limpo ", " Livro sobre tecnologia ", 6.50, new Autor(" Robert Cecil Martin "), Genero.F).ListaDeLivro; ;
+            var livro = new Livro();
+            var listaDeLivros = livro.GetLivros();
             return View(listaDeLivros);
         }
       

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BibliotecaWeb.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace BibliotecaWeb.Models
     public class Livro
     {
        
-        public Livro(string titulo, string descricao, double preco, Autor autor, Genero genero)
+        public Livro(string titulo, string descricao, double preco, Autor autor, string[] genero)
         {
             Titulo = titulo;
             Descricao = descricao;
@@ -24,7 +25,7 @@ namespace BibliotecaWeb.Models
         public string Descricao { get;  set; }
         public double Preco { get;  set; }
         public Autor Autor { get;  set; }
-        public Genero Genero { get;  set; }
+        public string[] Genero { get;  set; }
 
         public List<string> ListaLivros { get; set; }
 
@@ -49,8 +50,33 @@ namespace BibliotecaWeb.Models
         public List<Livro> ListaDeLivro => new List<Livro>()
         {
             this,
-            new Livro(" Harry Potter ", " Livro sobre uma escola de bruxaria ", 5, new Autor(" J. K. Rowling "), Genero.F)
+           new Livro("Lugar de Fala", "", 18.90, new Autor("DJamila"), new string[]{})
+
         };
+
+        public List<Livro> GetLivros()
+        {
+            var servico = new BibliotecaService();
+            var resposta = servico.BuscaLivro();
+
+            var listaDeLivro = new List<Livro>();
+            foreach (var item in resposta.Results)
+            {
+                var livro = new Livro()
+                {
+                    Titulo = item.TrackName,
+                    Autor = new Autor(item.ArtistName),
+                    Preco = item.Price,
+                    Genero = item.Genres,
+                    Descricao = item.Description
+                };
+
+                listaDeLivro.Add(livro);
+            }
+
+            return listaDeLivro;
+
+        }
     }
     public enum Genero
     {

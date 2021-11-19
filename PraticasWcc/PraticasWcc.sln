@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aula06", "Aula06", "{879B0C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoDeTeste", "ProjetoDeTeste\ProjetoDeTeste.csproj", "{D0EF4656-020D-4BC8-A5FF-368294D4919A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aula07-08", "Aula07-08", "{FCDCCA87-F7C3-446B-AABE-58B2F5990028}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjetoPratico", "ProjetoPratico", "{FCDCCA87-F7C3-446B-AABE-58B2F5990028}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaWeb", "BibliotecaWeb\BibliotecaWeb.csproj", "{3CB2CCF7-A9EE-45F6-8352-B77C27232330}"
 EndProject
