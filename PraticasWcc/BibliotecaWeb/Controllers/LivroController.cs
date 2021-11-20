@@ -22,13 +22,18 @@ namespace BibliotecaWeb.Controllers
             _logger = logger;
         }
 
-        public IActionResult Livro()
+        public IActionResult Livro(string textoPesquisa)
         {
-            //var listaDeLivros = new Livro(" Código Limpo ", " Livro sobre tecnologia ", 6.50, new Autor(" Robert Cecil Martin "), Genero.F).ListaDeLivro; ;
-            var livro = new Livro();
-            var listaDeLivros = livro.GetLivros();
+            //var listaDeLivros = new Livro(" Código Limpo ", " Livro sobre tecnologia ", 6.50, new Autor(" Robert Cecil Martin "), Genero.F).ListaDeLivro; 
+            var listaDeLivros = new Livro().GetLivros(textoPesquisa);
             return View(listaDeLivros);
         }
-      
+
+        public IActionResult LivroDetalhes(int id)
+        {
+            var livro = new Livro().GetLivrosPeloId(id);
+            return View(livro);
+        }
+
     }
 }

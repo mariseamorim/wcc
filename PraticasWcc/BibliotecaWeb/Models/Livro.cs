@@ -21,14 +21,27 @@ namespace BibliotecaWeb.Models
             
         }
 
+        int _id { get; set; }
+        string _descricao { get; set; }
         public string Titulo { get;  set; }
-        public string Descricao { get;  set; }
         public double Preco { get;  set; }
         public Autor Autor { get;  set; }
         public string[] Genero { get;  set; }
+        public string ImagemUrl { get; set; }
 
         public List<string> ListaLivros { get; set; }
 
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public string Descricao
+        {
+            get { return _descricao; }
+            set { _descricao = value.Replace("<br />", " "); }
+        }
         public Livro()
         {
             ListaLivros = new List<string>();
@@ -54,27 +67,50 @@ namespace BibliotecaWeb.Models
 
         };
 
-        public List<Livro> GetLivros()
+        public List<Livro> GetLivros(string textoPesquisa)
         {
             var servico = new BibliotecaService();
-            var resposta = servico.BuscaLivro();
+            var resposta = servico.BuscaLivro(textoPesquisa);
 
             var listaDeLivro = new List<Livro>();
             foreach (var item in resposta.Results)
             {
                 var livro = new Livro()
                 {
+                    Id = item.TrackId,
                     Titulo = item.TrackName,
                     Autor = new Autor(item.ArtistName),
                     Preco = item.Price,
                     Genero = item.Genres,
-                    Descricao = item.Description
+                    Descricao = item.Description,
+                    ImagemUrl = item.ArtworkUrl60
                 };
 
                 listaDeLivro.Add(livro);
             }
 
             return listaDeLivro;
+
+        }
+        public Livro GetLivrosPeloId(int id)
+        {
+            var servico = new BibliotecaService();
+            var resposta = servico.BuscaLivroPeloId(id);
+
+            var livroResposta = resposta.Results[0];
+
+           var livro = new Livro()
+           {
+                Id = livroResposta.TrackId,
+                Titulo = livroResposta.TrackName,
+                Autor = new Autor(livroResposta.ArtistName),
+                Preco = livroResposta.Price,
+                Genero = livroResposta.Genres,
+                Descricao = livroResposta.Description,
+                ImagemUrl = livroResposta.ArtworkUrl60
+           };
+
+            return livro;
 
         }
     }

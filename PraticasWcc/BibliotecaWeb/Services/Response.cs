@@ -22,11 +22,27 @@ namespace BibliotecaWeb.Service
 
     public class Result
     {
+
+        int _trackId { get; set; }
+        string _artworkUrl60 { get; set; }
+
         string _trackName { get; set; }
         string _artistName { get; set; }
         string[] _genres { get; set; }
         double _price { get; set; }
         string _description { get; set; }
+
+        public string ArtworkUrl60
+        {
+            get { return _artworkUrl60; }
+            set { _artworkUrl60 = value; }
+        }
+
+        public int TrackId
+        {
+            get { return _trackId; }
+            set { _trackId = value; }
+        }
 
         public string TrackName
         {
